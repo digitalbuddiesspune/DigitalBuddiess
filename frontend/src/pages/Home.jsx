@@ -1,6 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Code, BarChart, Smartphone, Zap, Globe, MessageCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight, Code, BarChart, Smartphone, Zap, Globe, MessageCircle, Plus, Minus } from 'lucide-react';
+
+// Social Media Icons as SVG Components
+const InstagramIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+);
+
+const FacebookIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </svg>
+);
+
+const YoutubeIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+);
 
 /* --- COMPONENTS --- */
 
@@ -57,19 +77,319 @@ const FloatingShape = ({ delay, className }) => (
   </motion.div>
 );
 
-const Navbar = () => (
-  <nav className="flex justify-between items-center py-6 px-8 max-w-7xl mx-auto w-full">
-    <div className="font-bold text-2xl tracking-tighter">digital<span className="text-orange-500">buddies</span>.</div>
-    <div className="hidden md:flex gap-8 text-sm font-medium text-gray-600">
-      <a href="#" className="hover:text-black transition">Work</a>
-      <a href="#" className="hover:text-black transition">Services</a>
-      <a href="#" className="hover:text-black transition">About</a>
-    </div>
-    <button className="bg-black text-white px-5 py-2 rounded-full text-sm hover:bg-orange-500 transition-colors">
-      Contact Us
-    </button>
-  </nav>
-);
+// 3. Accordion Section for Services
+const ServicesAccordion = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const services = [
+    {
+      title: "Digital Marketing Services",
+      description: "Elevate your online presence with tailored digital marketing strategies",
+      content: [
+        "Search Engine Optimization (SEO)",
+        "Pay-Per-Click Advertising (PPC)",
+        "Social Media Marketing",
+        "Email Marketing Campaigns",
+        "Content Marketing",
+        "Analytics & Reporting"
+      ]
+    },
+    {
+      title: "Creative Services",
+      description: "Bringing your brand to life with innovative and captivating visuals.",
+      content: [
+        "Graphic Design",
+        "Logo & Brand Identity",
+        "Print Design",
+        "Illustration",
+        "Photography",
+        "Video Production"
+      ]
+    },
+    {
+      title: "Web & App Development",
+      description: "Building responsive websites and apps that drive engagement and growth.",
+      content: [
+        "Custom Website Development",
+        "Mobile App Development",
+        "E-commerce Solutions",
+        "Web Application Development",
+        "API Integration",
+        "Maintenance & Support"
+      ]
+    },
+    {
+      title: "Advertising Services",
+      description: "Maximize your reach with data-driven advertising campaigns",
+      content: [
+        "Google Ads Management",
+        "Social Media Advertising",
+        "Display Advertising",
+        "Video Advertising",
+        "Retargeting Campaigns",
+        "Campaign Optimization"
+      ]
+    },
+    {
+      title: "Branding Services",
+      description: "Crafting unique brand identities that stand out in the market.",
+      content: [
+        "Brand Strategy",
+        "Logo Design",
+        "Brand Guidelines",
+        "Visual Identity Systems",
+        "Rebranding Services",
+        "Brand Positioning"
+      ]
+    },
+    {
+      title: "Additional Services",
+      description: "Comprehensive solutions to meet all your digital needs.",
+      content: [
+        "Consulting Services",
+        "Digital Strategy",
+        "Market Research",
+        "Competitor Analysis",
+        "Technical Support",
+        "Training & Workshops"
+      ]
+    },
+    {
+      title: "Ecommerce Marketing",
+      description: "Boost your online store's sales with proven ecommerce marketing tactics.",
+      content: [
+        "E-commerce Strategy",
+        "Product Listing Optimization",
+        "Shopping Campaigns",
+        "Conversion Rate Optimization",
+        "Abandoned Cart Recovery",
+        "Marketplace Management"
+      ]
+    },
+    {
+      title: "Lead Generation",
+      description: "Driving qualified leads to fuel your business growth.",
+      content: [
+        "Lead Generation Strategy",
+        "Landing Page Optimization",
+        "Lead Nurturing Campaigns",
+        "CRM Integration",
+        "Lead Qualification",
+        "Conversion Tracking"
+      ]
+    }
+  ];
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="py-20 bg-[#F5F5F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">What We Offer</h2>
+        </div>
+
+        <div className="space-y-4">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="bg-orange-500 rounded-lg overflow-hidden shadow-lg"
+              initial={false}
+            >
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-orange-600 transition-colors"
+              >
+                <div className="flex-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-800 font-normal">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <AnimatePresence mode="wait">
+                    {openIndex === index ? (
+                      <motion.div
+                        key="minus"
+                        initial={{ rotate: -90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Minus size={32} className="text-gray-900" strokeWidth={3.5} />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="plus"
+                        initial={{ rotate: 90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: -90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Plus size={32} className="text-gray-900" strokeWidth={3.5} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </button>
+
+              <div className="px-8 pb-2">
+                <div className="h-px bg-gray-900/20"></div>
+              </div>
+
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden bg-white"
+                  >
+                    <div className="px-8 pb-6 pt-4">
+                      <ul className="space-y-3">
+                        {service.content.map((item, itemIndex) => (
+                          <motion.li
+                            key={itemIndex}
+                            initial={{ x: -20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: itemIndex * 0.05 }}
+                            className="text-gray-900 text-sm md:text-base flex items-center font-medium"
+                          >
+                            <span className="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
+                            {item}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// 4. Contact Us Section with Floating Social Icons
+const ContactUsSection = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contact-us');
+  };
+
+  return (
+    <section className="relative py-20 bg-black overflow-hidden">
+      {/* Floating Social Media Icons */}
+      <motion.div
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 10, -10, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0,
+        }}
+        className="absolute left-10 top-1/4 hidden md:block"
+      >
+        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
+          <InstagramIcon className="w-10 h-10 text-pink-600" />
+        </div>
+      </motion.div>
+
+      <motion.div
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, -10, 10, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5,
+        }}
+        className="absolute right-20 top-1/3 hidden md:block"
+      >
+        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
+          <FacebookIcon className="w-10 h-10 text-blue-600" />
+        </div>
+      </motion.div>
+
+      <motion.div
+        animate={{
+          y: [0, -25, 0],
+          rotate: [0, 15, -15, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.8,
+        }}
+        className="absolute left-1/4 bottom-1/4 hidden md:block"
+      >
+        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
+          <YoutubeIcon className="w-10 h-10 text-red-600" />
+        </div>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        {/* Main Heading - DIGITAL */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-7xl md:text-9xl font-bold mb-6"
+          style={{
+            color: '#ea580c',
+            textShadow: '4px 4px 0px rgba(234, 88, 12, 0.3), 8px 8px 0px rgba(234, 88, 12, 0.2)',
+            letterSpacing: '0.05em'
+          }}
+        >
+          DIGITAL
+        </motion.h2>
+
+        {/* Subheading - BUDDIES */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-2xl md:text-3xl text-white mb-12 font-semibold tracking-wider"
+        >
+          BUDDIES
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.button
+          onClick={handleContactClick}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-12 rounded-full text-lg shadow-2xl transition-all duration-300"
+          style={{
+            boxShadow: '0 10px 30px rgba(234, 88, 12, 0.4)'
+          }}
+        >
+          Contact Us
+        </motion.button>
+      </div>
+    </section>
+  );
+};
 
 export default function LandingPage() {
   const [loading, setLoading] = useState(true);
@@ -95,8 +415,6 @@ export default function LandingPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Navbar />
-
           {/* --- HERO SECTION (Based on your Image) --- */}
           <section className="relative flex flex-col items-center justify-center text-center px-4 py-20 md:py-32 max-w-5xl mx-auto">
             {/* Abstract Floating Shapes imitating the image */}
@@ -137,6 +455,12 @@ export default function LandingPage() {
               </div>
             </motion.button>
           </section>
+
+          {/* --- SERVICES ACCORDION SECTION --- */}
+          <ServicesAccordion />
+
+          {/* --- CONTACT US SECTION --- */}
+          <ContactUsSection />
 
           {/* --- NEW SECTION: SERVICES --- */}
           <section className="py-20 bg-white">
@@ -217,22 +541,6 @@ export default function LandingPage() {
               </div>
             </div>
           </section>
-
-          {/* --- FOOTER --- */}
-          <footer className="py-12 px-6 border-t border-gray-200">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-4 md:mb-0">
-                <h2 className="text-xl font-bold">digital<span className="text-orange-500">buddies</span>.</h2>
-                <p className="text-sm text-gray-500 mt-1">© 2024 All rights reserved.</p>
-              </div>
-              <div className="flex gap-6 text-gray-600">
-                 <a href="#" className="hover:text-orange-500 transition">Privacy</a>
-                 <a href="#" className="hover:text-orange-500 transition">Terms</a>
-                 <a href="#" className="hover:text-orange-500 transition">Twitter</a>
-                 <a href="#" className="hover:text-orange-500 transition">LinkedIn</a>
-              </div>
-            </div>
-          </footer>
         </motion.main>
       )}
     </div>

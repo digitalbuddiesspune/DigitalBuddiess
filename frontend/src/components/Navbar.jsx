@@ -7,7 +7,13 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className="text-white text-xl font-bold">Digital Buddies</h1>
+            <NavLink to="/" className="flex items-center">
+              <img 
+                src="https://res.cloudinary.com/dfhjtmvrz/image/upload/v1764914021/digital_buddiess_logo2_pfpmnw.png"
+                alt="Digital Buddies Logo"
+                className="h-12 w-auto"
+              />
+            </NavLink>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
