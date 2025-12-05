@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <nav className="bg-gray-900 shadow-lg">
+    <nav className="bg-transparent absolute top-0 left-0 right-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -23,7 +23,7 @@ function Navbar() {
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-800 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-orange-800'
+                      : 'text-white hover:text-white hover:bg-orange-800/80'
                   }`
                 }
               >
@@ -35,7 +35,7 @@ function Navbar() {
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-800 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-orange-800'
+                      : 'text-white hover:text-white hover:bg-orange-800/80'
                   }`
                 }
               >
@@ -47,7 +47,7 @@ function Navbar() {
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-800 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-orange-800'
+                      : 'text-white hover:text-white hover:bg-orange-800/80'
                   }`
                 }
               >
@@ -59,7 +59,7 @@ function Navbar() {
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-800 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-orange-800'
+                      : 'text-white hover:text-white hover:bg-orange-800/80'
                   }`
                 }
               >
@@ -71,7 +71,7 @@ function Navbar() {
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-800 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-orange-800'
+                      : 'text-white hover:text-white hover:bg-orange-800/80'
                   }`
                 }
               >

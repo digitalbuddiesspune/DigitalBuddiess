@@ -57,7 +57,27 @@ const Preloader = ({ setLoading }) => {
   );
 };
 
-// 2. 3D Floating Shape (Abstract representation of your image's shapes)
+// 2. Video Background Component
+const VideoBackground = () => {
+  const videoUrl = 'https://res.cloudinary.com/dvkxgrcbv/video/upload/v1764925425/Digital_Agency_Showreel_2021_digitalmarketingagency_airpopmedia_socialmediamarketing_vthfhy.mp4';
+  
+  return (
+    <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+};
+
+// 3. 3D Floating Shape (Abstract representation of your image's shapes)
 const FloatingShape = ({ delay, className }) => (
   <motion.div
     animate={{
@@ -404,7 +424,7 @@ export default function LandingPage() {
   }, [loading]);
 
   return (
-    <div className="min-h-screen bg-[#F9F9F9] text-gray-900 font-sans selection:bg-orange-200">
+    <div className="min-h-screen bg-transparent text-gray-900 font-sans selection:bg-orange-200">
       <AnimatePresence>
         {loading && <Preloader setLoading={setLoading} />}
       </AnimatePresence>
@@ -416,44 +436,45 @@ export default function LandingPage() {
           transition={{ duration: 1 }}
         >
           {/* --- HERO SECTION (Based on your Image) --- */}
-          <section className="relative flex flex-col items-center justify-center text-center px-4 py-20 md:py-32 max-w-5xl mx-auto">
-            {/* Abstract Floating Shapes imitating the image */}
-            <FloatingShape delay={0} className="top-20 left-10 scale-125" />
-            <FloatingShape delay={1.5} className="bottom-20 right-20 scale-75" />
-            <FloatingShape delay={0.5} className="top-40 right-10 scale-90" />
-            <FloatingShape delay={2} className="bottom-40 left-20 scale-110" />
+          <section className="relative flex items-center justify-start px-4 sm:px-6 lg:px-8 py-20 md:py-32 min-h-screen overflow-hidden">
+            {/* Video Background */}
+            <VideoBackground />
+            
+            <div className="max-w-7xl mx-auto w-full relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                {/* Left Side - Text Content */}
+                <div className="flex flex-col items-start justify-center space-y-6 z-10 relative">
+                  <motion.h1 
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-3xl md:text-5xl font-semibold leading-tight text-left text-white"
+                  >
+                    We offer the best digital solutions<br />
+                    <span className="block">for <span className="font-serif italic font-light">your business.</span></span>
+                  </motion.h1>
 
-            <motion.h1 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl font-semibold leading-tight mb-6 z-10"
-            >
-              We offer the best digital solutions<br />
-              for <span className="font-serif italic font-light">your business.</span>
-            </motion.h1>
+                  <motion.button 
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-4 bg-white text-black pl-8 pr-2 py-2 rounded-full text-lg shadow-xl group mt-4"
+                  >
+                    Get Started Now
+                    <div className="bg-black text-white rounded-full p-2 group-hover:rotate-45 transition-transform duration-300">
+                      <ArrowRight size={20} />
+                    </div>
+                  </motion.button>
+                </div>
 
-            <motion.p 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-500 max-w-2xl text-lg md:text-xl leading-relaxed mb-10 z-10"
-            >
-              Whether you're a startup or an established business, we help you connect with your audience, boost engagement, and grow online—smarter and faster.
-            </motion.p>
-
-            <motion.button 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-4 bg-black text-white pl-8 pr-2 py-2 rounded-full text-lg shadow-xl z-10 group"
-            >
-              Get Started Now
-              <div className="bg-white text-black rounded-full p-2 group-hover:rotate-45 transition-transform duration-300">
-                <ArrowRight size={20} />
+                {/* Right Side - Visual Elements (can be used for images/videos later) */}
+                <div className="hidden lg:block relative z-10">
+                  {/* Space for visual elements */}
+                </div>
               </div>
-            </motion.button>
+            </div>
           </section>
 
           {/* --- SERVICES ACCORDION SECTION --- */}
