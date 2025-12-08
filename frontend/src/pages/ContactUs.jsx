@@ -108,39 +108,34 @@ function ContactUs() {
         
         {/* === HEADER SECTION: Dark Background & Text === */}
         <div 
-          className="relative bg-gray-900 bg-cover bg-center h-[420px] flex items-center overflow-hidden"
+          className="relative bg-gray-900 bg-cover bg-center min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden"
           style={{ 
             backgroundImage: `url('${backgroundImageURL}')`, 
           }}
         >
           {/* Dark Overlay for contrast */}
-          <div className="absolute inset-0 bg-black opacity-70"></div> 
+          <div className="absolute inset-0 bg-black opacity-60"></div> 
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-white w-full grid md:grid-cols-2 gap-8 items-center">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white w-full">
             
-            {/* Left Column: Text Content (Matching the image layout) */}
-            <div className={`max-w-md z-10 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
+            {/* Text Content - Centered */}
+            <div className={`max-w-3xl mx-auto text-center z-10 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
               {/* Tag/Badge */}
-              <div className="inline-block px-4 py-1.5 mb-5 text-xs font-semibold uppercase tracking-wider text-white bg-orange-600 rounded">
+              <div className="inline-block px-4 py-2 mb-6 text-xs font-semibold uppercase tracking-wider text-white bg-orange-600 rounded-full">
                 24/7 Support Solution
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Your Queries Are Important: <br />Connect with Us Anytime
               </h1>
               
               {/* Subtext */}
-              <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Your thoughts and concerns are important to us. If you have any questions, suggestions, 
                 or feedback, please reach out. Our friendly support team is ready to assist you and 
                 ensure you have a great experience.
               </p>
-            </div>
-            
-            {/* Right Column: Visual Element (Implicitly covered by the background image in the reference) */}
-            <div className="hidden md:block">
-              {/* Empty space, letting the background image and its subtle icon overlays show through */}
             </div>
           </div>
         </div>
