@@ -68,12 +68,12 @@ function Footer() {
                   618, Gera's, Imperum Rise, Wipro Circle, Hinjewadi, Pune Pincode: 411057.
                 </p>
               </div>
-              <div className="flex items-start gap-3">
+              {/* <div className="flex items-start gap-3">
                 <MapPin className="text-orange-500 mt-1 flex-shrink-0" size={18} />
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Central Ave, opp. Saini Travels, Gandhibagh, Nagpur, Maharashtra 440032
                 </p>
-              </div>
+              </div> */}
               <div className="flex items-start gap-3">
                 <Mail className="text-orange-500 mt-1 flex-shrink-0" size={18} />
                 <a href="mailto:info@digitalbuddiess.in" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
@@ -94,20 +94,20 @@ function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="text-orange-500" size={18} />
-                <a href="tel:+919766670916" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
-                  +91 9766670916
+                <a href="tel:+919637319746" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
+                  +91 9637319746
                 </a>
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <Phone className="text-orange-500" size={18} />
                 <a href="tel:+919404085316" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
                   +91 94040 85316
                 </a>
-              </div>
+              </div> */}
               <div className="flex items-center gap-2">
                 <Phone className="text-orange-500" size={18} />
-                <a href="tel:+919545871746" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
-                  +91 95458 71746
+                <a href="tel:+919766670916" className="text-gray-300 hover:text-orange-500 transition-colors text-sm">
+                  +91 9766670916
                 </a>
               </div>
             </div>
