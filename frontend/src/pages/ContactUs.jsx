@@ -238,7 +238,7 @@ function ContactUs() {
                   className="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 shadow-xl"
                 >
                   <span className="flex items-center justify-center">
-                    <span className="mr-2 text-xl sm:text-2xl">🔥</span> GET A FREE QUOTE
+                    <span className="mr-2 text-xl sm:text-2xl"></span> GET A FREE QUOTE
                   </span>
                 </button>
               </form>
