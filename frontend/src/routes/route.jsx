@@ -3,7 +3,6 @@ import App from '../App'
 import Home from '../pages/Home'
 import Service from '../pages/Service'
 import AboutUs from '../pages/AboutUs'
-import Blog from '../pages/Blog'
 import ContactUs from '../pages/ContactUs'
 
 const router = createBrowserRouter(
@@ -12,7 +11,6 @@ const router = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path="service" element={<Service />} />
             <Route path="about-us" element={<AboutUs />} />
-            <Route path="blog" element={<Blog />} />
             <Route path="contact-us" element={<ContactUs />} />
         </Route>
     )

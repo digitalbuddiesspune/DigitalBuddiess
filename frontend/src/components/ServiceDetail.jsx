@@ -31,7 +31,7 @@ const ServiceDetail = ({ serviceTitle, description, subServices }) => {
           {subServices.map((subService, index) => (
             <motion.button
               key={index}
-              className="w-full px-4 py-2.5 bg-gray-100 text-gray-800 rounded-full text-sm font-medium text-left"
+              className="w-full px-4 py-2.5 bg-gray-800 text-gray-200 rounded-full text-sm font-medium text-left border border-gray-700 hover:border-orange-500"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -41,7 +41,8 @@ const ServiceDetail = ({ serviceTitle, description, subServices }) => {
               }}
               whileHover={{ 
                 scale: 1.02, 
-                backgroundColor: "#e5e7eb",
+                backgroundColor: "#1f2937",
+                borderColor: "#f97316",
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.98 }}
@@ -58,7 +59,7 @@ const ServiceDetail = ({ serviceTitle, description, subServices }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          <p className="text-gray-700 text-base leading-relaxed">
+          <p className="text-gray-300 text-base leading-relaxed">
             {description}
           </p>
         </motion.div>
@@ -70,7 +71,7 @@ const ServiceDetail = ({ serviceTitle, description, subServices }) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.3 }}
         >
-          <div className="relative rounded-lg overflow-hidden bg-gray-200 aspect-[4/3]">
+          <div className="relative rounded-lg overflow-hidden bg-gray-800 aspect-[4/3] border border-gray-700">
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}

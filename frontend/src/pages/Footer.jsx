@@ -116,7 +116,7 @@ function Footer() {
           {/* Copyright */}
           <div className="text-center pt-6 border-t border-gray-700">
             <p className="text-gray-400 text-sm">
-              © Copyright 2024 by digitalbuddies.in
+              © Copyright {new Date().getFullYear()} by digitalbuddies.in
             </p>
           </div>
         </div>

@@ -104,34 +104,32 @@ function ContactUs() {
   return (
     <>
       <AnimatedStyles />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-black text-white relative overflow-hidden">
+        {/* Background decorative blob */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-600 rounded-full blur-[128px] opacity-20 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-600 rounded-full blur-[128px] opacity-20 pointer-events-none"></div>
         
         {/* === HEADER SECTION: Dark Background & Text === */}
         <div 
-          className="relative bg-gray-900 bg-cover bg-center min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden"
-          style={{ 
-            backgroundImage: `url('${backgroundImageURL}')`, 
-          }}
-        >
-          {/* Dark Overlay for contrast */}
-          <div className="absolute inset-0 bg-black opacity-60"></div> 
+          className="relative bg-black min-h-[300px] md:min-h-[400px] flex items-center overflow-hidden pt-24"
+        > 
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-white w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-white w-full">
             
-            {/* Text Content - Centered */}
-            <div className={`max-w-3xl mx-auto text-center z-10 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
+            {/* Text Content - Left Aligned */}
+            <div className={`max-w-3xl text-left z-10 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
               {/* Tag/Badge */}
               <div className="inline-block px-4 py-2 mb-6 text-xs font-semibold uppercase tracking-wider text-white bg-orange-600 rounded-full">
                 24/7 Support Solution
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-left">
                 Your Queries Are Important: <br />Connect with Us Anytime
               </h1>
               
               {/* Subtext */}
-              <p className="text-gray-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+              <p className="text-gray-200 text-sm md:text-base leading-relaxed max-w-2xl text-left">
                 Your thoughts and concerns are important to us. If you have any questions, suggestions, 
                 or feedback, please reach out. Our friendly support team is ready to assist you and 
                 ensure you have a great experience.
@@ -141,10 +139,10 @@ function ContactUs() {
         </div>
 
         {/* === MAIN CONTENT CONTAINER: Cards & Form === */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-12 sm:pb-16 relative z-10">
           
           {/* --- Contact Cards Section (4 Columns) --- */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12 sm:mb-16">
             {contactInfo.map((item, index) => (
               <div 
                 key={index} 
@@ -161,11 +159,11 @@ function ContactUs() {
             ))}
           </div>
 
-          {/* --- Form Section: White Card (Map Placeholder on Left, Form on Right) --- */}
-          <div className="bg-white p-8 sm:p-12 rounded-xl shadow-2xl grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* --- Form Section: Dark Card (Map Placeholder on Left, Form on Right) --- */}
+          <div className="bg-gray-900 p-4 sm:p-6 md:p-8 lg:p-12 rounded-xl shadow-2xl border border-gray-800 grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             
             {/* Left Column: Placeholder for the Map/Visual */}
-            <div className="hidden lg:block relative min-h-[400px] rounded-lg overflow-hidden">
+            <div className="hidden lg:block relative min-h-[300px] lg:min-h-[400px] rounded-lg overflow-hidden">
               <iframe
                 title="Office Location"
                 src={mapEmbedURL}
@@ -178,7 +176,7 @@ function ContactUs() {
 
             {/* Right Column: Contact Form */}
             <div className="w-full">
-              <h2 className="text-2xl font-extrabold text-gray-900 mb-8">READY TO GROW YOUR BUSINESS?</h2>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white mb-6 sm:mb-8">READY TO GROW YOUR BUSINESS?</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 
@@ -191,7 +189,7 @@ function ContactUs() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
                       placeholder="Name"
                     />
                   </div>
@@ -202,7 +200,7 @@ function ContactUs() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
                       placeholder="Email"
                     />
                   </div>
@@ -216,7 +214,7 @@ function ContactUs() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Phone Number"
                   />
                 </div>
@@ -229,7 +227,7 @@ function ContactUs() {
                     onChange={handleChange}
                     required
                     rows="6"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 bg-gray-100 resize-none"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none placeholder-gray-400"
                     placeholder="Message"
                   ></textarea>
                 </div>
@@ -237,10 +235,10 @@ function ContactUs() {
                 {/* Submit Button (Bright Orange style) */}
                 <button
                   type="submit"
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-xl"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 shadow-xl"
                 >
                   <span className="flex items-center justify-center">
-                    <span className="mr-2 text-2xl">🔥</span> GET A FREE QUOTE
+                    <span className="mr-2 text-xl sm:text-2xl">🔥</span> GET A FREE QUOTE
                   </span>
                 </button>
               </form>
