@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import WhatWeOffer from '../components/WhatWeOffer';
-import ContactUsSection from '../components/ContactUsSection';
-import OurExpertise from '../components/OurExpertise';
-import OurClients from '../components/OurClients';
-import WhyChooseUs from '../components/WhyChooseUs';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import WhatWeOffer from "../components/WhatWeOffer";
+import ContactUsSection from "../components/ContactUsSection";
+import OurExpertise from "../components/OurExpertise";
+import OurClients from "../components/OurClients";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 /* --- COMPONENTS --- */
 
@@ -19,8 +19,8 @@ const Preloader = ({ setLoading }) => {
         opacity: 0,
         transition: {
           duration: 0.6,
-          ease: "easeInOut"
-        }
+          ease: "easeInOut",
+        },
       }}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white"
     >
@@ -30,13 +30,12 @@ const Preloader = ({ setLoading }) => {
         transition={{ duration: 1, ease: "easeOut" }}
         className="text-3xl md:text-5xl font-light tracking-wider"
       >
-        Welcome to <span className="font-bold text-orange-500">digital buddies</span>
+        Welcome to{" "}
+        <span className="font-bold text-orange-500">digital buddies</span>
       </motion.h1>
 
       {/* Loading Bar */}
-      <motion.div
-        className="mt-8 h-1 bg-gray-800 rounded-full w-48 overflow-hidden"
-      >
+      <motion.div className="mt-8 h-1 bg-gray-800 rounded-full w-48 overflow-hidden">
         <motion.div
           className="h-full bg-orange-500"
           initial={{ width: 0 }}
@@ -51,21 +50,38 @@ const Preloader = ({ setLoading }) => {
 
 // 2. Video Background Component
 const VideoBackground = () => {
-  const videoUrl = 'https://res.cloudinary.com/dvkxgrcbv/video/upload/v1765265102/Digital_Buddies_Ad_Video_2_3_hlw0gd.mp4';
+  const videoUrl =
+    "https://res.cloudinary.com/dvkxgrcbv/video/upload/v1765265102/Digital_Buddies_Ad_Video_2_3_hlw0gd.mp4";
+  const videoUrl2 =
+    "https://res.cloudinary.com/dvkxgrcbv/video/upload/v1765558319/DB_Video_1_yajawf.mp4";
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <source src={videoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <>
+     <div className="md:hidden absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        >
+          <source src={videoUrl2} type="video/mp4" />
+        </video>
+      </div>
+      <div className="hidden md:block absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        >
+          <source src={videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+     
+    </>
   );
 };
 
@@ -91,21 +107,23 @@ const FloatingShape = ({ delay, className }) => (
 
 export default function LandingPage() {
   // Only show preloader on the very first visit, not when navigating from navbar
-  const [loading, setLoading] = useState(!sessionStorage.getItem('preloaderShown'));
+  const [loading, setLoading] = useState(
+    !sessionStorage.getItem("preloaderShown")
+  );
 
   // Prevent scrolling while loading
   useEffect(() => {
     if (loading) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [loading]);
 
   // Mark preloader as shown in sessionStorage when it completes
   useEffect(() => {
     if (!loading) {
-      sessionStorage.setItem('preloaderShown', 'true');
+      sessionStorage.setItem("preloaderShown", "true");
     }
   }, [loading]);
 
@@ -134,7 +152,9 @@ export default function LandingPage() {
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-2 sm:gap-4 bg-white text-black pl-4 sm:pl-8 pr-2 py-2 sm:py-2.5 rounded-full text-sm sm:text-base md:text-lg shadow-xl group justify-center"
               >
-                <span className="text-xs sm:text-base md:text-lg">Get Started Now</span>
+                <span className="text-xs sm:text-base md:text-lg">
+                  Get Started Now
+                </span>
                 <div className="bg-black text-white rounded-full p-1.5 sm:p-2 group-hover:rotate-45 transition-transform duration-300">
                   <ArrowRight size={16} className="sm:w-5 sm:h-5" />
                 </div>
