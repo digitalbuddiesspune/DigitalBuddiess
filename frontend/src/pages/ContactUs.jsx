@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ContactUsForm from '../components/ContactUsForm';
 
 // NOTE: Add this <style> block to your component or ensure these animations 
 // are defined in your global CSS for the smooth effects to work.
@@ -26,28 +27,6 @@ const AnimatedStyles = () => (
 
 
 function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // In a real application, you would send this data to a server API endpoint
-    console.log('Form submitted:', formData);
-    alert('Thank you! Your query has been received.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
-  };
-
   // --- Your Contact Information ---
   // Three cards: Contact, Mail, Address
   const contactInfo = [
@@ -177,71 +156,7 @@ function ContactUs() {
             {/* Right Column: Contact Form */}
             <div className="w-full">
               <h2 className="text-xl sm:text-2xl font-extrabold text-white mb-6 sm:mb-8">READY TO GROW YOUR BUSINESS?</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {/* Name and Email (or Phone) - Row 1 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-                      placeholder="Name"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-
-                {/* Phone Number - Row 2 (Added to match common form fields, adjust if needed) */}
-                <div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-                    placeholder="Phone Number"
-                  />
-                </div>
-                
-                {/* Message Field */}
-                <div>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="6"
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none placeholder-gray-400"
-                    placeholder="Message"
-                  ></textarea>
-                </div>
-
-                {/* Submit Button (Bright Orange style) */}
-                <button
-                  type="submit"
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 shadow-xl"
-                >
-                  <span className="flex items-center justify-center">
-                    <span className="mr-2 text-xl sm:text-2xl"></span> GET A FREE QUOTE
-                  </span>
-                </button>
-              </form>
+              <ContactUsForm />
             </div>
           </div>
         </div>
