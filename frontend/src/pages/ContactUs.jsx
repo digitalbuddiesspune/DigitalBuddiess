@@ -32,7 +32,7 @@ function ContactUs() {
   const contactInfo = [
     { 
       title: 'Contact Us', 
-      detail: '+91 9766670916', 
+      detail: '+91 9404085316', 
       icon: 'phone',
       bgColor: 'bg-orange-600',
       hoverColor: 'hover:bg-orange-700'
@@ -45,8 +45,15 @@ function ContactUs() {
       hoverColor: 'hover:bg-orange-700'
     },
     { 
-      title: 'Address', 
+      title: 'Address (Pune)', 
       detail: '618 , Gera’s , Imperum Rise, Wipro Circle , Hinjewadi, Pune Pincode : 411057.', 
+      icon: 'location',
+      bgColor: 'bg-orange-600',
+      hoverColor: 'hover:bg-orange-700'
+    },
+    { 
+      title: 'Address (Nagpur)', 
+      detail: 'Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur', 
       icon: 'location',
       bgColor: 'bg-orange-600',
       hoverColor: 'hover:bg-orange-700'
@@ -121,7 +128,7 @@ function ContactUs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-12 sm:pb-16 relative z-10">
           
           {/* --- Contact Cards Section (4 Columns) --- */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12 sm:mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-12 sm:mb-16">
             {contactInfo.map((item, index) => (
               <div 
                 key={index} 

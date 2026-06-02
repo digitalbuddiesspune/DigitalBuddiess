@@ -213,8 +213,9 @@ function DataPrivacy() {
                 </p>
                 <div className="space-y-2 text-gray-300">
                   <p><strong className="text-white">Email:</strong> info@digitalbuddiess.in</p>
-                  <p><strong className="text-white">Phone:</strong> +919637319746, +919766670916</p>
-                  <p><strong className="text-white">Address:</strong> 618, Gera's Imperum Rise, Wipro Circle, Hinjewadi, Pune – 411057</p>
+                  <p><strong className="text-white">Phone:</strong> +919637319746, +919404085316</p>
+                  <p><strong className="text-white">Address (Pune):</strong> 618, Gera's Imperum Rise, Wipro Circle, Hinjewadi, Pune – 411057</p>
+                  <p><strong className="text-white">Address (Nagpur):</strong> Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur</p>
                 </div>
               </div>
             </div>

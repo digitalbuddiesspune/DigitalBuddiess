@@ -90,6 +90,13 @@ function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
+                <MapPin className="text-orange-500 mt-1 flex-shrink-0" size={18} />
+                <p className="text-gray-300 text-sm break-words">
+                  Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur
+                </p>
+              </div>
+
+              <div className="flex items-start gap-3">
                 <Mail className="text-orange-500 mt-1 flex-shrink-0" size={18} />
                 <a
                   href="mailto:info@digitalbuddiess.in"
@@ -115,7 +122,7 @@ function Footer() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-6 w-full sm:w-auto">
               {[
                 "+919637319746",
-                "+919766670916",
+                "+919404085316",
               ].map((phone) => (
                 <div key={phone} className="flex items-center gap-2 justify-center sm:justify-start">
                   <Phone className="text-orange-500 flex-shrink-0" size={18} />

@@ -77,7 +77,7 @@ function Navbar() {
                 Contact Us
               </NavLink>
               <a
-                href="https://wa.me/919766670916"
+                href="https://wa.me/919404085316"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 bg-green-500 text-white hover:bg-green-600 flex items-center gap-2"
@@ -159,7 +159,7 @@ function Navbar() {
                 Contact Us
               </NavLink>
               <a
-                href="https://wa.me/919766670916"
+                href="https://wa.me/919404085316"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
