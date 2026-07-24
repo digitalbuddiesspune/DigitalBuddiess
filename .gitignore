@@ -22,6 +22,11 @@ pnpm-debug.log*
 .env.test
 .env.test.local
 
+# Backend uploads & generated data
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/data/
+
 # Editor / IDE folders
 .vscode/
 .idea/

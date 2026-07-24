@@ -53,6 +53,7 @@ function Footer() {
                 { name: "Home", path: "/" },
                 { name: "Service", path: "/service" },
                 { name: "About Us", path: "/about-us" },
+                { name: "Portfolio", path: "/portfolio" },
                 { name: "Contact Us", path: "/contact-us" },
               ].map((link) => (
                 <li key={link.path}>

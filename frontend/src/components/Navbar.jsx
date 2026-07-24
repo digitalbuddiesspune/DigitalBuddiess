@@ -65,6 +65,18 @@ function Navbar() {
                 About Us
               </NavLink>
               <NavLink
+                to="/portfolio"
+                className={({ isActive }) =>
+                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                    isActive
+                      ? 'bg-orange-500 text-white'
+                      : 'text-white hover:text-white hover:bg-orange-500'
+                  }`
+                }
+              >
+                Portfolio
+              </NavLink>
+              <NavLink
                 to="/contact-us"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
@@ -144,6 +156,19 @@ function Navbar() {
                 }
               >
                 About Us
+              </NavLink>
+              <NavLink
+                to="/portfolio"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-3 py-2 rounded-md text-base font-medium ${
+                    isActive
+                      ? 'bg-orange-500 text-white'
+                      : 'text-white hover:bg-orange-500'
+                  }`
+                }
+              >
+                Portfolio
               </NavLink>
               <NavLink
                 to="/contact-us"
