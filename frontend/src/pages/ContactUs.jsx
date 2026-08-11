@@ -32,7 +32,7 @@ function ContactUs() {
   const contactInfo = [
     { 
       title: 'Contact Us', 
-      detail: '+91 9404085316', 
+      detail: '+91 9637319746 (Pune) | +91 9404085316 (Nagpur)', 
       icon: 'phone',
       bgColor: 'bg-orange-600',
       hoverColor: 'hover:bg-orange-700'
@@ -56,7 +56,8 @@ function ContactUs() {
       detail: 'Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur', 
       icon: 'location',
       bgColor: 'bg-orange-600',
-      hoverColor: 'hover:bg-orange-700'
+      hoverColor: 'hover:bg-orange-700',
+     
     },
   ];
   
