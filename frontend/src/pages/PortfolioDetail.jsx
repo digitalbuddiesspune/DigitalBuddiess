@@ -96,7 +96,8 @@ function PortfolioDetail() {
         ])
         if (cancelled) return
         setItem(detail)
-        setRelated(all.filter((entry) => entry.id !== id).slice(0, 3))
+        const list = Array.isArray(all) ? all : []
+        setRelated(list.filter((entry) => entry.id !== id).slice(0, 3))
         const hasImages =
           Boolean(detail.imageUrl) || (detail.gallery || []).length > 0
         const hasVideos = (detail.videos || []).length > 0

@@ -56,7 +56,7 @@ function Portfolio() {
         setLoading(true)
         setError('')
         const data = await api.getPortfolio()
-        if (!cancelled) setItems(data)
+        if (!cancelled) setItems(Array.isArray(data) ? data : [])
       } catch (err) {
         if (!cancelled) setError(err.message || 'Failed to load portfolio')
       } finally {
@@ -70,20 +70,22 @@ function Portfolio() {
     }
   }, [])
 
+  const safeItems = Array.isArray(items) ? items : []
+
   const filters = useMemo(() => {
     const known = new Set(FILTERS.map((f) => f.id))
-    const extras = [...new Set(items.map((item) => item.category).filter(Boolean))]
+    const extras = [...new Set(safeItems.map((item) => item.category).filter(Boolean))]
       .filter((category) => !known.has(category))
       .map((category) => ({ id: category, label: category, icon: Briefcase }))
     return [...FILTERS, ...extras]
-  }, [items])
+  }, [safeItems])
 
   const filtered = useMemo(() => {
-    if (activeCategory === 'All') return items
-    return items.filter(
+    if (activeCategory === 'All') return safeItems
+    return safeItems.filter(
       (item) => item.category?.toLowerCase() === activeCategory.toLowerCase()
     )
-  }, [items, activeCategory])
+  }, [safeItems, activeCategory])
 
   const visibleItems = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length

@@ -66,7 +66,7 @@ function AdminPortfolio() {
       setLoading(true)
       setError('')
       const data = await api.getPortfolio()
-      setItems(data)
+      setItems(Array.isArray(data) ? data : [])
     } catch (err) {
       setError(err.message || 'Failed to load portfolio')
     } finally {

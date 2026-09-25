@@ -27,11 +27,42 @@ async function request(path, options = {}) {
     headers,
   })
 
-  const data = await response.json().catch(() => ({}))
+  const contentType = response.headers.get('content-type') || ''
+  const raw = await response.text()
+
+  let data = {}
+  if (raw) {
+    try {
+      data = JSON.parse(raw)
+    } catch {
+      if (!response.ok) {
+        throw new Error('Request failed')
+      }
+      throw new Error(
+        'API returned a non-JSON response. Check that VITE_API_URL points to the backend.'
+      )
+    }
+  }
+
   if (!response.ok) {
     throw new Error(data.message || 'Request failed')
   }
+
+  // Guard against HTML/SPA fallbacks accidentally treated as success.
+  if (contentType.includes('text/html')) {
+    throw new Error(
+      'API returned HTML instead of JSON. Check that VITE_API_URL points to the backend.'
+    )
+  }
+
   return data
+}
+
+function asPortfolioList(data) {
+  if (Array.isArray(data)) return data
+  if (Array.isArray(data?.items)) return data.items
+  if (Array.isArray(data?.data)) return data.data
+  return []
 }
 
 export const api = {
@@ -43,7 +74,7 @@ export const api = {
 
   me: () => request('/api/auth/me'),
 
-  getPortfolio: () => request('/api/portfolio'),
+  getPortfolio: async () => asPortfolioList(await request('/api/portfolio')),
 
   getPortfolioItem: (id) => request(`/api/portfolio/${id}`),
 
