@@ -124,7 +124,7 @@ const ContactUsForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Full Name */}
           <div>
-            <label htmlFor="fullName" className="block text-sm font-semibold text-gray-200 mb-2">
+            <label htmlFor="fullName" className="block text-sm font-subheading font-semibold text-gray-200 mb-2">
               Full Name <span className="text-orange-600">*</span>
             </label>
             <input
@@ -133,14 +133,14 @@ const ContactUsForm = () => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
+              className={`w-full px-4 py-3 border rounded-lg font-paragraph text-sm sm:text-base transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
                 errors.fullName
                   ? 'border-red-400 focus:ring-red-500 focus:border-red-500'
                   : 'border-gray-600 focus:ring-orange-500 focus:border-orange-500'
               }`}
             />
             {errors.fullName && (
-              <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+              <p className="mt-1 text-sm font-paragraph text-red-500 flex items-center gap-1">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
@@ -153,7 +153,7 @@ const ContactUsForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-200 mb-2">
+              <label htmlFor="email" className="block text-sm font-subheading font-semibold text-gray-200 mb-2">
                 Email Address <span className="text-orange-600">*</span>
               </label>
               <input
@@ -162,14 +162,14 @@ const ContactUsForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
+                className={`w-full px-4 py-3 border rounded-lg font-paragraph text-sm sm:text-base transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
                   errors.email
                     ? 'border-red-400 focus:ring-red-500 focus:border-red-500'
                     : 'border-gray-600 focus:ring-orange-500 focus:border-orange-500'
                 }`}
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <p className="mt-1 text-sm font-paragraph text-red-500 flex items-center gap-1">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
@@ -180,7 +180,7 @@ const ContactUsForm = () => {
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-gray-200 mb-2">
+              <label htmlFor="phone" className="block text-sm font-subheading font-semibold text-gray-200 mb-2">
                 Phone Number <span className="text-orange-600">*</span>
               </label>
               <input
@@ -189,14 +189,14 @@ const ContactUsForm = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
+                className={`w-full px-4 py-3 border rounded-lg font-paragraph text-sm sm:text-base transition-all duration-200 focus:outline-none focus:ring-2 bg-gray-800 text-white placeholder-gray-400 ${
                   errors.phone
                     ? 'border-red-400 focus:ring-red-500 focus:border-red-500'
                     : 'border-gray-600 focus:ring-orange-500 focus:border-orange-500'
                 }`}
               />
               {errors.phone && (
-                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <p className="mt-1 text-sm font-paragraph text-red-500 flex items-center gap-1">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
@@ -208,7 +208,7 @@ const ContactUsForm = () => {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-200 mb-2">
+            <label htmlFor="message" className="block text-sm font-subheading font-semibold text-gray-200 mb-2">
               Message <span className="text-orange-600">*</span>
             </label>
             <textarea
@@ -217,14 +217,14 @@ const ContactUsForm = () => {
               value={formData.message}
               onChange={handleChange}
               rows="6"
-              className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 resize-none bg-gray-800 text-white placeholder-gray-400 ${
+              className={`w-full px-4 py-3 border rounded-lg font-paragraph text-sm sm:text-base transition-all duration-200 focus:outline-none focus:ring-2 resize-none bg-gray-800 text-white placeholder-gray-400 ${
                 errors.message
                   ? 'border-red-400 focus:ring-red-500 focus:border-red-500'
                   : 'border-gray-600 focus:ring-orange-500 focus:border-orange-500'
               }`}
             />
             {errors.message && (
-              <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+              <p className="mt-1 text-sm font-paragraph text-red-500 flex items-center gap-1">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
@@ -237,7 +237,7 @@ const ContactUsForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-subheading font-bold py-4 px-6 rounded-lg text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 cursor-pointer"
           >
             {isSubmitting ? (
               <>

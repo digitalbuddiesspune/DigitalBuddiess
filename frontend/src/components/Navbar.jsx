@@ -10,13 +10,22 @@ function Navbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
+  const handleNavClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+    setIsMobileMenuOpen(false)
+  }
   
   return (
     <nav className={`${isTransparentPage ? 'bg-transparent' : 'bg-black'} absolute top-0 left-0 right-0 z-50`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <NavLink to="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+            <NavLink to="/" className="flex items-center" onClick={handleNavClick}>
               <img 
                 src="https://res.cloudinary.com/dfhjtmvrz/image/upload/v1764914021/digital_buddiess_logo2_pfpmnw.png"
                 alt="Digital Buddies Logo"
@@ -30,8 +39,9 @@ function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink
                 to="/"
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                  `px-3 py-2 rounded-md text-sm font-subheading font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:text-white hover:bg-orange-500'
@@ -42,8 +52,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/service"
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                  `px-3 py-2 rounded-md text-sm font-subheading font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:text-white hover:bg-orange-500'
@@ -54,8 +65,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/about-us"
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                  `px-3 py-2 rounded-md text-sm font-subheading font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:text-white hover:bg-orange-500'
@@ -66,8 +78,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/portfolio"
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                  `px-3 py-2 rounded-md text-sm font-subheading font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:text-white hover:bg-orange-500'
@@ -78,8 +91,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/contact-us"
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-110 ${
+                  `px-3 py-2 rounded-md text-sm font-subheading font-medium transition-all duration-300 transform hover:scale-110 ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:text-white hover:bg-orange-500'
@@ -120,9 +134,9 @@ function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/95 rounded-lg mt-2 border border-gray-800">
               <NavLink
                 to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-md text-base font-subheading font-medium ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:bg-orange-500'
@@ -133,9 +147,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/service"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-md text-base font-subheading font-medium ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:bg-orange-500'
@@ -146,9 +160,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/about-us"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-md text-base font-subheading font-medium ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:bg-orange-500'
@@ -159,9 +173,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/portfolio"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-md text-base font-subheading font-medium ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:bg-orange-500'
@@ -172,9 +186,9 @@ function Navbar() {
               </NavLink>
               <NavLink
                 to="/contact-us"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-md text-base font-subheading font-medium ${
                     isActive
                       ? 'bg-orange-500 text-white'
                       : 'text-white hover:bg-orange-500'
@@ -188,7 +202,7 @@ function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium bg-green-500 text-white hover:bg-green-600 flex items-center gap-2"
+                className="block px-3 py-2 rounded-md text-base font-subheading font-medium bg-green-500 text-white hover:bg-green-600 flex items-center gap-2"
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

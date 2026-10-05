@@ -43,13 +43,13 @@ function TermsAndConditions() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">
               TERMS & <span className="text-orange-500">CONDITIONS</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-orange-500 mt-6">
+            <p className="font-subheading font-semibold text-base sm:text-lg text-orange-500 mt-6 leading-[1.4] tracking-normal lg:tracking-[-0.01em]">
               Legal Agreement for Our Services
             </p>
-            <p className="text-gray-300 mt-4 max-w-3xl mx-auto">
+            <p className="font-paragraph text-gray-400 mt-4 max-w-3xl mx-auto text-sm sm:text-base">
               Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </motion.div>
@@ -68,14 +68,14 @@ function TermsAndConditions() {
             className="max-w-4xl mx-auto space-y-8"
           >
             <div className="bg-gray-900 border-l-4 border-orange-500 p-8 rounded-r-lg">
-              <h2 className="text-3xl font-bold mb-4 text-white">Agreement to Terms</h2>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                By accessing or using the services provided by <span className="font-bold text-orange-500">Digital Buddies</span> ("we," "our," or "us"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 text-white leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Agreement to Terms</h2>
+              <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">
+                By accessing or using the services provided by <span className="font-subheading font-bold text-orange-500">Digital Buddies</span> ("we," "our," or "us"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.
               </p>
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-white mt-12 mb-6">Key Terms</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mt-12 mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Key Terms</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 {termsSections.map((section, index) => (
@@ -88,15 +88,15 @@ function TermsAndConditions() {
                     className="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300"
                   >
                     <div className="text-orange-500 mb-4">{section.icon}</div>
-                    <h3 className="text-xl font-bold text-white mb-3">{section.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{section.description}</p>
+                    <h3 className="font-subheading font-semibold text-base sm:text-lg text-white mb-3 leading-[1.4] tracking-normal lg:tracking-[-0.01em]">{section.title}</h3>
+                    <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{section.description}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Services Description</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Services Description</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   Digital Buddies provides digital marketing services including but not limited to:
@@ -131,7 +131,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Payment Terms</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Payment Terms</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <ul className="space-y-4 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -155,7 +155,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Client Responsibilities</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Client Responsibilities</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   To ensure successful project delivery, clients agree to:
@@ -186,7 +186,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Intellectual Property Rights</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Intellectual Property Rights</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <ul className="space-y-4 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -210,7 +210,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Limitation of Liability</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Limitation of Liability</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   To the maximum extent permitted by law:
@@ -237,7 +237,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Termination</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Termination</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   Either party may terminate services:
@@ -260,7 +260,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Governing Law</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Governing Law</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed">
                   These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Pune, Maharashtra.
@@ -269,7 +269,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Changes to Terms</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Changes to Terms</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed">
                   We reserve the right to modify these Terms and Conditions at any time. Changes will be effective immediately upon posting. Your continued use of our services after changes are posted constitutes acceptance of the modified terms.
@@ -278,7 +278,7 @@ function TermsAndConditions() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Contact Us</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Contact Us</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   If you have any questions about these Terms and Conditions, please contact us:

@@ -269,7 +269,7 @@ function PortfolioDetail() {
           <div className="relative z-10 px-4 sm:px-6 pt-5 pb-4 flex items-center justify-between gap-3">
             <Link
               to="/portfolio"
-              className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-subheading font-medium text-white/55 hover:text-white transition-colors"
             >
               <ArrowLeft size={16} />
               Portfolio
@@ -281,7 +281,7 @@ function PortfolioDetail() {
                   type="button"
                   onClick={() => setMediaTab('images')}
                   disabled={!hasImages}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-subheading font-medium transition-all cursor-pointer ${
                     mediaTab === 'images'
                       ? 'bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.35)]'
                       : 'text-white/55 hover:text-white disabled:opacity-30'
@@ -297,7 +297,7 @@ function PortfolioDetail() {
                   type="button"
                   onClick={() => setMediaTab('videos')}
                   disabled={!hasVideos}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-subheading font-medium transition-all cursor-pointer ${
                     mediaTab === 'videos'
                       ? 'bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.35)]'
                       : 'text-white/55 hover:text-white disabled:opacity-30'
@@ -531,37 +531,37 @@ function PortfolioDetail() {
           >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-5 text-sm">
               {item.category && (
-                <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-orange-500 text-white">
+                <span className="px-3 py-1 rounded-full text-[11px] font-subheading font-bold tracking-wide uppercase bg-orange-500 text-white">
                   {item.category}
                 </span>
               )}
               {item.duration && (
-                <span className="inline-flex items-center gap-1.5 text-white/55">
+                <span className="inline-flex items-center gap-1.5 text-white/55 font-subheading font-medium">
                   <Clock3 size={14} className="text-orange-400" />
                   {item.duration}
                 </span>
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tight leading-[1.08] mb-5">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl leading-[1.15] tracking-tight mb-3">
               {title}
             </h1>
 
             {item.description && (
-              <p className="text-base sm:text-lg text-white/60 leading-relaxed mb-8">
+              <p className="font-paragraph font-normal text-xs sm:text-sm text-white/60 leading-[1.6] mb-6">
                 {item.description}
               </p>
             )}
 
             <div className="flex flex-wrap gap-4 text-sm text-white/45 mb-8">
               {hasImages && (
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 font-subheading font-medium">
                   <ImageIcon size={14} className="text-orange-500" />
                   {slides.length} image{slides.length === 1 ? '' : 's'}
                 </span>
               )}
               {hasVideos && (
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 font-subheading font-medium">
                   <Video size={14} className="text-orange-500" />
                   {videos.length} video{videos.length === 1 ? '' : 's'}
                 </span>
@@ -576,7 +576,7 @@ function PortfolioDetail() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-orange-500 hover:bg-orange-400 text-sm font-medium transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-orange-500 hover:bg-orange-400 text-sm font-subheading font-semibold transition-colors"
                   >
                     {link.label || 'Open link'}
                     <ExternalLink size={15} />
@@ -589,7 +589,7 @@ function PortfolioDetail() {
               <button
                 type="button"
                 onClick={() => setMediaTab('videos')}
-                className="inline-flex items-center gap-2 text-sm text-orange-400 hover:text-orange-300 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-subheading font-semibold text-orange-400 hover:text-orange-300 transition-colors cursor-pointer"
               >
                 <Play size={14} fill="currentColor" />
                 Watch project video
@@ -599,7 +599,7 @@ function PortfolioDetail() {
             <div className="mt-10 pt-8 border-t border-white/10">
               <Link
                 to="/contact-us"
-                className="inline-flex items-center gap-2 text-white hover:text-orange-400 transition-colors font-medium"
+                className="inline-flex items-center gap-2 text-white hover:text-orange-400 transition-colors font-subheading font-semibold"
               >
                 Start a similar project
                 <ArrowUpRight size={18} />
@@ -614,12 +614,12 @@ function PortfolioDetail() {
         <section className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
             <div className="flex items-end justify-between gap-4 mb-10">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl leading-[1.15] tracking-tight">
                 More projects
               </h2>
               <Link
                 to="/portfolio"
-                className="text-sm text-white/45 hover:text-orange-400 transition-colors"
+                className="text-sm font-subheading font-medium text-white/45 hover:text-orange-400 transition-colors"
               >
                 View all
               </Link>
@@ -650,12 +650,12 @@ function PortfolioDetail() {
                       )}
                     </div>
                     {entry.category && (
-                      <p className="text-orange-500 text-xs tracking-wide uppercase mb-1.5">
+                      <p className="text-orange-500 text-xs font-subheading font-bold tracking-wide uppercase mb-1.5">
                         {entry.category}
                       </p>
                     )}
                     <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-lg font-semibold truncate group-hover:text-orange-400 transition-colors">
+                      <h3 className="font-subheading font-semibold text-base sm:text-lg leading-[1.35] truncate group-hover:text-orange-400 transition-colors">
                         {entry.title || 'Untitled project'}
                       </h3>
                       <ArrowUpRight

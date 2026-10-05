@@ -28,12 +28,12 @@ function Footer() {
               className="h-12 sm:h-16 w-auto mb-4 sm:mb-6"
             />
 
-            <h3 className="text-base sm:text-lg font-bold uppercase mb-3 relative pb-2">
+            <h3 className="font-subheading font-semibold text-base sm:text-lg uppercase mb-2 relative pb-1.5 tracking-wider">
               About Our Company
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-orange-500" />
             </h3>
 
-            <p className="text-gray-300 leading-relaxed text-sm sm:text-base break-words">
+            <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6] break-words">
               Our sole purpose as a digital marketing agency is to elevate your
               brand beyond the reach of your competitors. You bring the
               vision—Digital Buddies turns it into a powerful and outstanding
@@ -43,7 +43,7 @@ function Footer() {
 
           {/* Explore */}
           <div className="text-center md:text-left col-span-1 mt-8 md:mt-0">
-            <h3 className="text-base sm:text-lg font-bold uppercase mb-3 relative pb-2 inline-block">
+            <h3 className="font-subheading font-semibold text-base sm:text-lg uppercase mb-2 relative pb-1.5 inline-block tracking-wider">
               Explore
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-orange-500" />
             </h3>
@@ -61,7 +61,7 @@ function Footer() {
                     to={link.path}
                     onClick={scrollToTop}
                     className={({ isActive }) =>
-                      `text-sm transition-colors ${
+                      `text-sm font-subheading font-medium transition-colors ${
                         isActive
                           ? "text-orange-500"
                           : "text-gray-300 hover:text-orange-500"
@@ -77,7 +77,7 @@ function Footer() {
 
           {/* Contact */}
           <div className="col-span-1 mt-8 md:mt-0">
-            <h3 className="text-base sm:text-lg font-bold uppercase mb-3 relative pb-2 inline-block">
+            <h3 className="font-subheading font-semibold text-base sm:text-lg uppercase mb-2 relative pb-1.5 inline-block tracking-wider">
               Contact
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-orange-500" />
             </h3>
@@ -85,14 +85,14 @@ function Footer() {
             <div className="space-y-4 mt-6">
               <div className="flex items-start gap-3">
                 <MapPin className="text-orange-500 mt-1 flex-shrink-0" size={18} />
-                <p className="text-gray-300 text-sm break-words">
+                <p className="font-paragraph text-gray-300 text-sm break-words leading-relaxed">
                   618, Gera's Imperum Rise, Wipro Circle, Hinjewadi, Pune – 411057
                 </p>
               </div>
 
               <div className="flex items-start gap-3">
                 <MapPin className="text-orange-500 mt-1 flex-shrink-0" size={18} />
-                <p className="text-gray-300 text-sm break-words">
+                <p className="font-paragraph text-gray-300 text-sm break-words leading-relaxed">
                   Cabin No 3, Apartment No 202, second floor, near Basket Ball ground, opposite Mini Punjab, Dharampeth, Nagpur
                 </p>
               </div>
@@ -101,7 +101,7 @@ function Footer() {
                 <Mail className="text-orange-500 mt-1 flex-shrink-0" size={18} />
                 <a
                   href="mailto:info@digitalbuddiess.in"
-                  className="text-gray-300 hover:text-orange-500 transition-colors text-sm break-all"
+                  className="font-paragraph text-gray-300 hover:text-orange-500 transition-colors text-sm break-all"
                 >
                   info@digitalbuddiess.in
                 </a>
@@ -113,8 +113,8 @@ function Footer() {
         {/* Bottom CTA */}
         <div className="border-t border-gray-700 pt-6 md:pt-8 mt-6 md:mt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 mb-6">
-            <p className="text-sm text-center md:text-left">
-              <span className="text-orange-500 font-semibold">
+            <p className="font-paragraph text-sm sm:text-base text-center md:text-left">
+              <span className="font-subheading text-orange-500 font-semibold">
                 Have Any Project?
               </span>{" "}
               Let's Talk & Grow your Business
@@ -130,7 +130,7 @@ function Footer() {
                   <a
                     href={`tel:${phone}`}
                     aria-label={`Call Digital Buddies at ${phone}`}
-                    className="text-gray-300 hover:text-orange-500 transition-colors text-sm whitespace-nowrap"
+                    className="font-paragraph text-gray-300 hover:text-orange-500 transition-colors text-sm whitespace-nowrap"
                   >
                     {phone.replace("+91", "+91 ")}
                   </a>
@@ -151,7 +151,7 @@ function Footer() {
                   <NavLink
                     to={link.path}
                     onClick={scrollToTop}
-                    className="text-gray-300 hover:text-orange-500 transition-colors text-xs sm:text-sm"
+                    className="font-subheading text-gray-300 hover:text-orange-500 transition-colors text-xs sm:text-sm"
                   >
                     {link.name}
                   </NavLink>
@@ -159,7 +159,7 @@ function Footer() {
               ))}
             </ul>
 
-            <p className="text-gray-400 text-xs sm:text-sm text-center">
+            <p className="font-paragraph text-gray-400 text-xs sm:text-sm text-center">
               © {new Date().getFullYear()} Digital Buddies All rights reserved.
             </p>
           </div>

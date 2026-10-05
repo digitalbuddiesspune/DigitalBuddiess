@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContactUsForm from '../components/ContactUsForm';
 
 // NOTE: Add this <style> block to your component or ensure these animations 
@@ -27,6 +27,10 @@ const AnimatedStyles = () => (
 
 
 function ContactUs() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
   // --- Your Contact Information ---
   // Three cards: Contact, Mail, Address
   const contactInfo = [
@@ -106,17 +110,17 @@ function ContactUs() {
             {/* Text Content - Left Aligned */}
             <div className={`max-w-3xl text-left z-10 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
               {/* Tag/Badge */}
-              <div className="inline-block px-4 py-2 mb-6 text-xs font-semibold uppercase tracking-wider text-white bg-orange-600 rounded-full">
+              <div className="inline-block px-4 py-2 mb-6 text-xs font-subheading font-bold uppercase tracking-wider text-white bg-orange-600 rounded-full">
                 24/7 Support Solution
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-left">
+              <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 leading-[1.15] tracking-tight text-left">
                 Your Queries Are Important: <br />Connect with Us Anytime
               </h1>
               
               {/* Subtext */}
-              <p className="text-gray-200 text-sm md:text-base leading-relaxed max-w-2xl text-left">
+              <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-200 leading-[1.6] max-w-xl text-left">
                 Your thoughts and concerns are important to us. If you have any questions, suggestions, 
                 or feedback, please reach out. Our friendly support team is ready to assist you and 
                 ensure you have a great experience.
@@ -140,8 +144,8 @@ function ContactUs() {
                 <div className="text-3xl mb-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-orange-600">
                     {renderIcon(item.icon)}
                 </div>
-                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                <p className="text-sm opacity-90">{item.detail}</p>
+                <h3 className="font-subheading font-semibold text-base sm:text-lg leading-[1.35] mb-1">{item.title}</h3>
+                <p className="font-paragraph font-normal text-xs sm:text-sm opacity-90 leading-[1.6]">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -163,7 +167,7 @@ function ContactUs() {
 
             {/* Right Column: Contact Form */}
             <div className="w-full">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-white mb-6 sm:mb-8">READY TO GROW YOUR BUSINESS?</h2>
+              <h2 className="font-subheading font-semibold text-base sm:text-lg text-white mb-4 sm:mb-6 leading-[1.35]">READY TO GROW YOUR BUSINESS?</h2>
               <ContactUsForm />
             </div>
           </div>

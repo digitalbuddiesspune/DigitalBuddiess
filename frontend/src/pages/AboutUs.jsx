@@ -90,10 +90,10 @@ function AboutUs() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 leading-[1.15] tracking-tight">
               ABOUT US – <span className="text-orange-500">Digital Buddiess</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-orange-500 mt-6">
+            <p className="font-subheading font-semibold text-base sm:text-lg text-orange-500 mt-3 leading-[1.35]">
               We Build Digital Growth With Clarity & Creativity.
             </p>
           </motion.div>
@@ -109,20 +109,20 @@ function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed"
+            className="max-w-4xl mx-auto space-y-4 font-paragraph text-xs sm:text-sm text-gray-300 leading-[1.6]"
           >
             <p>
               At <span className="font-bold text-orange-600">Digital Buddiess</span>, we believe every brand has a story worth telling — it just needs the right digital push to be heard.
             </p>
             <p>
-              We are a growing digital marketing agency based in <span className="font-semibold">Pune and Nagpur</span>, helping businesses build their online presence with strategies that are practical, creative, and result-driven. Whether you're a startup finding your voice or an established brand looking to scale, we act as your extended digital team — your "Buddies" in the digital world.
+              We are a growing digital marketing agency based in <span className="font-semibold text-white">Pune and Nagpur</span>, helping businesses build their online presence with strategies that are practical, creative, and result-driven. Whether you're a startup finding your voice or an established brand looking to scale, we act as your extended digital team — your "Buddies" in the digital world.
             </p>
             <div className="bg-gray-900 border-l-4 border-orange-500 p-6 my-8 rounded-r-lg">
-              <p className="font-semibold text-white mb-2">Our approach is simple:</p>
-              <p className="text-gray-300">
-                <span className="font-bold text-orange-500">Understand</span> → <span className="font-bold text-orange-500">Strategize</span> → <span className="font-bold text-orange-500">Create</span> → <span className="font-bold text-orange-500">Optimize</span> → <span className="font-bold text-orange-500">Grow</span>
+              <p className="font-subheading font-semibold text-white mb-2">Our approach is simple:</p>
+              <p className="font-paragraph text-gray-300">
+                <span className="font-subheading font-bold text-orange-500">Understand</span> → <span className="font-subheading font-bold text-orange-500">Strategize</span> → <span className="font-subheading font-bold text-orange-500">Create</span> → <span className="font-subheading font-bold text-orange-500">Optimize</span> → <span className="font-subheading font-bold text-orange-500">Grow</span>
               </p>
-              <p className="text-gray-400 mt-2 text-sm">
+              <p className="text-gray-400 mt-2 text-sm font-paragraph">
                 No jargon. No over-promising. Just honest work, clear communication, and measurable results.
               </p>
             </div>
@@ -141,8 +141,8 @@ function AboutUs() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">What We Do</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 text-white leading-[1.15] tracking-tight">What We Do</h2>
+            <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 max-w-2xl mx-auto leading-[1.6]">
               We help businesses grow with a mix of creative thinking and smart performance marketing.
             </p>
           </motion.div>
@@ -158,8 +158,8 @@ function AboutUs() {
                 className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-orange-500 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{service.description}</p>
+                <h3 className="font-subheading font-semibold text-base sm:text-lg text-white mb-2 leading-[1.35]">{service.title}</h3>
+                <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -177,11 +177,11 @@ function AboutUs() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-4 block">WHAT WE DO</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            <span className="text-orange-500 font-subheading font-bold uppercase tracking-widest text-xs mb-4 block">WHAT WE DO</span>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 text-white leading-[1.15] tracking-tight">
               FRESH IDEAS FOR EVERY BUSINESS
             </h2>
-            <p className="text-2xl text-orange-500 font-semibold">
+            <p className="font-subheading font-semibold text-base sm:text-lg text-orange-500 leading-[1.35]">
               Creative Solutions That Put Your Brand Ahead.
             </p>
           </motion.div>
@@ -209,8 +209,8 @@ function AboutUs() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300"
               >
-                <h3 className="text-2xl font-bold mb-4 text-orange-500">{item.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                <h3 className="font-subheading font-semibold text-base sm:text-lg mb-2 text-orange-500 leading-[1.35]">{item.title}</h3>
+                <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -228,7 +228,7 @@ function AboutUs() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">WHY CHOOSE DIGITAL BUDDIESS</h2>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 text-white leading-[1.15] tracking-tight">WHY CHOOSE DIGITAL BUDDIESS</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -244,8 +244,8 @@ function AboutUs() {
                 <div className="flex items-start gap-4">
                   <div className="text-orange-500 flex-shrink-0 mt-1">{item.icon}</div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                    <h3 className="font-subheading font-semibold text-base sm:text-lg text-white mb-1.5 leading-[1.35]">{item.title}</h3>
+                    <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -265,8 +265,8 @@ function AboutUs() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">WHY CHOOSE US</h2>
-            <p className="text-2xl text-orange-500 font-semibold">
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 text-white leading-[1.15] tracking-tight">WHY CHOOSE US</h2>
+            <p className="font-subheading font-semibold text-base sm:text-lg text-orange-500 leading-[1.35]">
               Smart Execution. Creative Thinking. Reliable Growth.
             </p>
           </motion.div>
@@ -284,8 +284,8 @@ function AboutUs() {
                 <div className="flex items-start gap-4">
                   <div className="text-orange-500 flex-shrink-0 mt-1">{item.icon}</div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                    <h3 className="font-subheading font-semibold text-base sm:text-lg mb-1.5 text-white leading-[1.35]">{item.title}</h3>
+                    <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{item.description}</p>
                   </div>
                 </div>
               </motion.div>

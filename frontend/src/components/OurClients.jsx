@@ -63,7 +63,7 @@ const OurClients = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 leading-[1.15] tracking-tight">
             <span className="text-white">Our </span>
             <span className="text-orange-500">Clients</span>
           </h2>

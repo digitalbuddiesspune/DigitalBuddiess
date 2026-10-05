@@ -1,8 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { 
+  ArrowRight, 
+  MessageCircle, 
+  PhoneCall, 
+  Clock, 
+  TrendingUp, 
+  ShieldCheck, 
+  Flame,
+  CheckCircle2
+} from 'lucide-react';
 
-// Social Media Icons as SVG Components
+// Social Media Icons
 const InstagramIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -33,29 +43,29 @@ const ContactUsSection = () => {
 
   const handleContactClick = () => {
     navigate('/contact-us');
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const FloatingIcon = ({ iconId, icon: Icon, iconColor, className, animationClass }) => {
+  // Interactive floating social pills with subtle hover physics
+  const FloatingSocialPill = ({ icon: Icon, label, handle, href, colorClass, borderClass, bgClass, positionClass, delay }) => {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
-    const iconRef = useRef(null);
+    const pillRef = useRef(null);
 
     const handleMouseMove = (e) => {
-      if (!iconRef.current) return;
-      const rect = iconRef.current.getBoundingClientRect();
-      const iconCenterX = rect.left + rect.width / 2;
-      const iconCenterY = rect.top + rect.height / 2;
-      
-      const deltaX = e.clientX - iconCenterX;
-      const deltaY = e.clientY - iconCenterY;
+      if (!pillRef.current) return;
+      const rect = pillRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const deltaX = e.clientX - centerX;
+      const deltaY = e.clientY - centerY;
       const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-      
-      if (distance < 100) {
-        // Move away from cursor
+
+      if (distance < 120) {
         const angle = Math.atan2(deltaY, deltaX);
-        const moveDistance = 30;
+        const force = 18;
         setOffset({
-          x: -Math.cos(angle) * moveDistance,
-          y: -Math.sin(angle) * moveDistance
+          x: -Math.cos(angle) * force,
+          y: -Math.sin(angle) * force
         });
       } else {
         setOffset({ x: 0, y: 0 });
@@ -66,207 +76,266 @@ const ContactUsSection = () => {
       setOffset({ x: 0, y: 0 });
     };
 
+    const PillContent = (
+      <div
+        ref={pillRef}
+        style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
+        className={`flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-gray-950/80 backdrop-blur-md border ${borderClass} shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer`}
+      >
+        <div className={`w-7 h-7 rounded-full ${bgClass} flex items-center justify-center`}>
+          <Icon className={`w-3.5 h-3.5 ${colorClass}`} />
+        </div>
+        <div className="text-left pr-1">
+          <div className="text-[10px] font-paragraph text-gray-400 uppercase tracking-wider">{label}</div>
+          <div className="text-xs font-subheading font-bold text-white leading-tight">{handle}</div>
+        </div>
+      </div>
+    );
+
     return (
-      <div 
-        className={`absolute ${className} hidden md:block z-20 ${animationClass}`}
+      <motion.div
+        className={`absolute ${positionClass} hidden lg:flex items-center z-20`}
+        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <div 
-          ref={iconRef}
-          className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer"
-          style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
-        >
-          <Icon className={`w-10 h-10 ${iconColor}`} />
-        </div>
-      </div>
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {PillContent}
+          </a>
+        ) : (
+          PillContent
+        )}
+      </motion.div>
     );
   };
 
   return (
-    <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 md:pb-32 overflow-hidden radial-rings-bg">
+    <section className="relative py-16 sm:py-20 md:py-28 bg-black text-white overflow-hidden">
+      {/* Background Atmosphere Elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-orange-600/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-700/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Floating Social Icons */}
-      <FloatingIcon
-        iconId="instagram"
+      {/* Subtle Grid Texture */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-40 pointer-events-none" />
+
+      {/* Floating Interactive Social Pills (Desktop) */}
+      <FloatingSocialPill
         icon={InstagramIcon}
-        iconColor="text-pink-600"
-        className="left-10 top-1/4"
-        animationClass="animate-float"
+        label="Instagram"
+        handle="@digitalbuddiess_pune"
+        href="https://www.instagram.com/digitalbuddiess_pune?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
+        colorClass="text-pink-500"
+        borderClass="border-pink-500/30 hover:border-pink-500"
+        bgClass="bg-pink-500/10"
+        positionClass="left-6 xl:left-14 top-24"
+        delay={0.2}
       />
-
-      <FloatingIcon
-        iconId="facebook"
+      <FloatingSocialPill
         icon={FacebookIcon}
-        iconColor="text-blue-600"
-        className="right-20 top-1/3"
-        animationClass="animate-float-delay-1"
+        label="Meta Ads"
+        handle="High ROAS Scaling"
+        colorClass="text-blue-500"
+                href="https://www.instagram.com/digitalbuddiess_pune?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
+        borderClass="border-blue-500/30 hover:border-blue-500"
+        bgClass="bg-blue-500/10"
+        positionClass="right-6 xl:right-14 top-28"
+        delay={0.3}
       />
-
-      <FloatingIcon
-        iconId="youtube"
+      <FloatingSocialPill
         icon={YoutubeIcon}
-        iconColor="text-red-600"
-        className="left-1/4 bottom-1/4"
-        animationClass="animate-float-delay-2"
+        label="YouTube"
+        handle="10M+ Video Views"
+        colorClass="text-red-500"
+        borderClass="border-red-500/30 hover:border-red-500"
+        bgClass="bg-red-500/10"
+        positionClass="left-8 xl:left-20 bottom-24"
+        delay={0.4}
       />
-
-      <FloatingIcon
-        iconId="whatsapp"
+      <FloatingSocialPill
         icon={WhatsAppIcon}
-        iconColor="text-green-600"
-        className="right-1/4 top-1/2"
-        animationClass="animate-float-delay-3"
+        label="Instant Chat"
+        handle="+91 94040 85316"
+        href="https://wa.me/919404085316"
+        colorClass="text-green-500"
+        borderClass="border-green-500/30 hover:border-green-500"
+        bgClass="bg-green-500/10"
+        positionClass="right-8 xl:right-20 bottom-28"
+        delay={0.5}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col items-center text-center">
 
-          {/* DIGITAL */}
-          <motion.div 
-            className="mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-orange-500 tracking-tight px-4">
-              DIGITAL
-            </h2>
-          </motion.div>
-
-          {/* BUDDIES */}
-          <motion.div 
-            className="mb-6 sm:mb-8"
+          {/* Section Heading */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="max-w-3xl mb-8 sm:mb-12"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold font-cursive1 text-white tracking-wider px-4">
-              BUDDIES
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-3 sm:mb-4 leading-[1.15] tracking-tight">
+              Hire The Team Behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500">Iconic Social Brands</span>
+            </h2>
+            <p className="font-paragraph text-xs sm:text-sm text-gray-300 leading-[1.6] max-w-xl mx-auto">
+              From scroll-stopping reels and viral campaigns to hyper-targeted performance advertising, we engineer digital growth that delivers measurable ROI.
             </p>
           </motion.div>
 
-          {/* Circular Video */}
-          <motion.div 
-            className="relative mb-8 sm:mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Central Circular / Organic Glowing Video Showcase */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative mb-10 sm:mb-14"
           >
-            <div className="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] rounded-full overflow-hidden border-2 sm:border-4 border-white/20 shadow-2xl mx-auto">
+            {/* Pulsing Animated Glow Ring */}
+            <div className="absolute -inset-2.5 sm:-inset-4 rounded-full bg-gradient-to-tr from-orange-500/40 via-amber-500/20 to-orange-600/40 blur-xl opacity-75 animate-pulse" />
 
-              <div className="absolute inset-0 rounded-full overflow-hidden">
-                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            {/* Rotating Subtle Gradient Border Container */}
+            <div className="relative w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] rounded-full p-1 sm:p-1.5 bg-gradient-to-b from-orange-500/60 via-gray-800 to-orange-500/30 shadow-2xl">
+              <div className="w-full h-full rounded-full overflow-hidden relative bg-black border border-white/10">
+                
+                {/* Embedded Video */}
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-105"
+                >
                   <source src={videoUrl} type="video/mp4" />
                 </video>
-              </div>
 
-              <motion.div 
-                className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center z-10 bg-black/20"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              >
-                <div className="space-y-1 sm:space-y-2">
-                  <motion.p 
-                    className="text-white text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                  >
-                    HIRE THE TEAM
-                  </motion.p>
-                  <motion.p 
-                    className="text-white text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                  >
-                    THAT BUILT SOME OF
-                  </motion.p>
-                  <motion.p 
-                    className="text-white text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.9 }}
-                  >
-                    THE MOST ICONIC BRANDS ON
-                  </motion.p>
-                  <motion.p 
-                    className="text-yellow-400 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wide mt-1 sm:mt-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 1.0 }}
-                  >
-                    SOCIAL MEDIA
-                  </motion.p>
+                {/* Aesthetic Dark Vignette Overlay with Message */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/50 flex flex-col items-center justify-between p-6 sm:p-8 text-center pointer-events-none">
+                  <div className="pt-2">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] sm:text-xs font-subheading font-medium text-orange-400">
+                      <Flame className="w-3 h-3 text-orange-400 fill-orange-400" />
+                      Social First Agency
+                    </span>
+                  </div>
+
+                  <div className="space-y-1 sm:space-y-1.5 pb-2">
+                    <p className="text-white text-[11px] sm:text-xs md:text-sm font-subheading font-bold uppercase tracking-wider text-gray-200">
+                      Crafting Content For
+                    </p>
+                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 font-heading font-bold text-base sm:text-lg md:text-xl uppercase tracking-wide">
+                      Modern Brands
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Button */}
-          <motion.button
-            onClick={handleContactClick}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full text-base sm:text-lg shadow-2xl transition-all duration-300 w-full sm:w-auto max-w-xs sm:max-w-none"
-            style={{ boxShadow: '0 10px 30px rgba(234, 88, 12, 0.4)' }}
-          >
-            Contact Us
-          </motion.button>
-
-          {/* Mobile Social Media Icons */}
+          {/* Action CTAs */}
           <motion.div
-            className="md:hidden mt-8 flex justify-center items-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto mb-10"
           >
+            <button
+              onClick={handleContactClick}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-subheading font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg shadow-orange-500/25 transition-all duration-300 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <span>Get Free Strategy Session</span>
+              <ArrowRight className="w-4 h-4 text-white" />
+            </button>
+
             <a
-              href="https://www.instagram.com"
+              href="https://wa.me/919637319746"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gray-900/90 hover:bg-gray-800 text-gray-200 hover:text-white font-subheading font-medium text-xs sm:text-sm px-6 py-3.5 rounded-full border border-gray-700/80 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <InstagramIcon className="w-6 h-6 text-pink-600" />
+              <WhatsAppIcon className="w-4 h-4 text-green-400" />
+              <span>WhatsApp Us</span>
+            </a>
+          </motion.div>
+
+          {/* Value Proposition Highlights */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 pt-4 sm:pt-6 border-t border-gray-800/80 w-full max-w-4xl"
+          >
+            <div className="flex items-center justify-center gap-2.5 text-gray-300">
+              <Clock className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="font-subheading text-xs sm:text-sm font-medium">
+                24-Hour Fast Turnaround
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2.5 text-gray-300">
+              <TrendingUp className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="font-subheading text-xs sm:text-sm font-medium">
+                Data & ROAS Focused
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2.5 text-gray-300">
+              <ShieldCheck className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="font-subheading text-xs sm:text-sm font-medium">
+                100% Customized Solutions
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Mobile Social Bar */}
+          <motion.div
+            className="lg:hidden mt-8 flex justify-center items-center gap-3"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <a
+              href="https://www.instagram.com/digitalbuddiess_pune?stkn=MXZhc3VtajU1Y2F2YQ=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-9 h-9 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-pink-500 hover:bg-gray-800 transition-colors"
+            >
+              <InstagramIcon className="w-4 h-4" />
             </a>
             <a
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95"
+              aria-label="Facebook"
+              className="w-9 h-9 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-blue-500 hover:bg-gray-800 transition-colors"
             >
-              <FacebookIcon className="w-6 h-6 text-blue-600" />
+              <FacebookIcon className="w-4 h-4" />
             </a>
             <a
               href="https://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95"
+              aria-label="YouTube"
+              className="w-9 h-9 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-red-500 hover:bg-gray-800 transition-colors"
             >
-              <YoutubeIcon className="w-6 h-6 text-red-600" />
+              <YoutubeIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://wa.me"
+              href="https://wa.me/919404085316"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95"
+              aria-label="WhatsApp"
+              className="w-9 h-9 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-green-500 hover:bg-gray-800 transition-colors"
             >
-              <WhatsAppIcon className="w-6 h-6 text-green-600" />
+              <WhatsAppIcon className="w-4 h-4" />
             </a>
           </motion.div>
+
         </div>
       </div>
     </section>

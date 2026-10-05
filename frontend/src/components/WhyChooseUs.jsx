@@ -10,19 +10,19 @@ const WhyChooseUs = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
         <div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Smarter solutions for <br className="hidden sm:block" /><span className="text-orange-500">modern problems.</span></h2>
-          <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8">
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 sm:mb-4 leading-[1.15] tracking-tight">Smarter solutions for <br className="hidden sm:block" /><span className="text-orange-500">modern problems.</span></h2>
+          <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6] mb-5 sm:mb-6">
             We don't just build software; we build partnerships. Our agile approach ensures that we adapt to your needs instantly.
           </p>
-          <div className="flex flex-col gap-3 sm:gap-4">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
             {[
               "24/7 Dedicated Support",
               "Scalable Cloud Architecture",
               "User-Centric Design Philosophy"
             ].map((feat, i) => (
-              <div key={i} className="flex items-center gap-2 sm:gap-3">
-                <div className="bg-orange-500 rounded-full p-1"><Zap size={12} className="sm:w-3.5 sm:h-3.5 text-black" /></div>
-                <span className="font-medium text-sm sm:text-base">{feat}</span>
+              <div key={i} className="flex items-center gap-2 sm:gap-2.5">
+                <div className="bg-orange-500 rounded-full p-1"><Zap size={10} className="sm:w-3 sm:h-3 text-black" /></div>
+                <span className="font-subheading font-medium text-xs sm:text-sm">{feat}</span>
               </div>
             ))}
           </div>
@@ -33,12 +33,12 @@ const WhyChooseUs = () => {
             <div className="space-y-3 sm:space-y-4 translate-y-4 sm:translate-y-6 md:translate-y-8">
               <div className="bg-gray-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-800">
                 <Code className="text-orange-500 mb-2 w-5 h-5 sm:w-6 sm:h-6" />
-                <div className="font-bold text-xl sm:text-2xl">150+</div>
-                <div className="text-xs sm:text-sm text-gray-500">Projects Done</div>
+                <div className="font-heading font-bold text-xl sm:text-2xl">150+</div>
+                <div className="font-paragraph text-xs sm:text-sm text-gray-400">Projects Done</div>
               </div>
               <div className="bg-gray-800 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-700">
                 <MessageCircle className="text-blue-400 mb-2 w-5 h-5 sm:w-6 sm:h-6" />
-                <div className="font-bold text-base sm:text-lg">Instant Comms</div>
+                <div className="font-subheading font-semibold text-base sm:text-lg">Instant Comms</div>
               </div>
             </div>
             <div className="space-y-3 sm:space-y-4">
@@ -107,8 +107,8 @@ const WhyChooseUs = () => {
                 </svg>
               </div>
               <div className="bg-gray-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-800">
-                <div className="font-bold text-xl sm:text-2xl">98%</div>
-                <div className="text-xs sm:text-sm text-gray-500">Client Satisfaction</div>
+                <div className="font-heading font-bold text-xl sm:text-2xl">98%</div>
+                <div className="font-paragraph text-xs sm:text-sm text-gray-400">Client Satisfaction</div>
               </div>
             </div>
           </div>

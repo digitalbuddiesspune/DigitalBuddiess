@@ -28,10 +28,10 @@ const Preloader = ({ setLoading }) => {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="text-3xl md:text-5xl font-light tracking-wider"
+        className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-center px-4 leading-[1.15] tracking-tight"
       >
         Welcome to{" "}
-        <span className="font-bold text-orange-500">digital buddies</span>
+        <span className="text-orange-500">digital buddies</span>
       </motion.h1>
 
       {/* Loading Bar */}
@@ -150,9 +150,9 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center gap-2 sm:gap-4 bg-white text-black pl-4 sm:pl-8 pr-2 py-2 sm:py-2.5 rounded-full text-sm sm:text-base md:text-lg shadow-xl group justify-center"
+                className="flex items-center gap-2 sm:gap-4 bg-white text-black pl-4 sm:pl-8 pr-2 py-2 sm:py-2.5 rounded-full text-sm sm:text-base md:text-lg font-subheading font-semibold shadow-xl group justify-center cursor-pointer"
               >
-                <span className="text-xs sm:text-base md:text-lg">
+                <span className="text-xs sm:text-base md:text-lg font-subheading font-semibold">
                   Get Started Now
                 </span>
                 <div className="bg-black text-white rounded-full p-1.5 sm:p-2 group-hover:rotate-45 transition-transform duration-300">

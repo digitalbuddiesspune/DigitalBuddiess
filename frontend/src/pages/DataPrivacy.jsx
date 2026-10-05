@@ -43,13 +43,13 @@ function DataPrivacy() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">
               DATA <span className="text-orange-500">PRIVACY</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-orange-500 mt-6">
+            <p className="font-subheading font-semibold text-base sm:text-lg text-orange-500 mt-6 leading-[1.4] tracking-normal lg:tracking-[-0.01em]">
               Your Privacy Matters to Us
             </p>
-            <p className="text-gray-300 mt-4 max-w-3xl mx-auto">
+            <p className="font-paragraph text-gray-400 mt-4 max-w-3xl mx-auto text-sm sm:text-base">
               Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </motion.div>
@@ -68,14 +68,14 @@ function DataPrivacy() {
             className="max-w-4xl mx-auto space-y-8"
           >
             <div className="bg-gray-900 border-l-4 border-orange-500 p-8 rounded-r-lg">
-              <h2 className="text-3xl font-bold mb-4 text-white">Introduction</h2>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                At <span className="font-bold text-orange-500">Digital Buddies</span>, we are committed to protecting your privacy and ensuring the security of your personal information. This Data Privacy Policy explains how we collect, use, store, and protect your data when you interact with our services.
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 text-white leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Introduction</h2>
+              <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">
+                At <span className="font-subheading font-bold text-orange-500">Digital Buddies</span>, we are committed to protecting your privacy and ensuring the security of your personal information. This Data Privacy Policy explains how we collect, use, store, and protect your data when you interact with our services.
               </p>
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-white mt-12 mb-6">Key Privacy Principles</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mt-12 mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Key Privacy Principles</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 {privacyPoints.map((point, index) => (
@@ -88,15 +88,15 @@ function DataPrivacy() {
                     className="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-orange-500 transition-all duration-300"
                   >
                     <div className="text-orange-500 mb-4">{point.icon}</div>
-                    <h3 className="text-xl font-bold text-white mb-3">{point.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{point.description}</p>
+                    <h3 className="font-subheading font-semibold text-base sm:text-lg text-white mb-3 leading-[1.4] tracking-normal lg:tracking-[-0.01em]">{point.title}</h3>
+                    <p className="font-paragraph font-normal text-xs sm:text-sm text-gray-300 leading-[1.6]">{point.description}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Information We Collect</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Information We Collect</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <ul className="space-y-4 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -120,7 +120,7 @@ function DataPrivacy() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">How We Use Your Information</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">How We Use Your Information</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <ul className="space-y-4 text-gray-300">
                   <li className="flex items-start gap-3">
@@ -148,7 +148,7 @@ function DataPrivacy() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Data Security</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Data Security</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes:
@@ -175,7 +175,7 @@ function DataPrivacy() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Your Rights</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Your Rights</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   You have the following rights regarding your personal information:
@@ -206,7 +206,7 @@ function DataPrivacy() {
             </div>
 
             <div className="mt-12 space-y-6">
-              <h2 className="text-3xl font-bold text-white mb-6">Contact Us</h2>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 leading-[1.1] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.03em]">Contact Us</h2>
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   If you have any questions, concerns, or requests regarding this Data Privacy Policy or our data practices, please contact us:

@@ -1,39 +1,83 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ServiceDetail from '../components/ServiceDetail'
 
 function Service() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [openIndex, setOpenIndex] = useState(null)
+
+  useEffect(() => {
+    if (location.state?.selectedService !== undefined && location.state?.selectedService !== null) {
+      const idx = location.state.selectedService
+      setOpenIndex(idx)
+      setTimeout(() => {
+        const el = document.getElementById(`service-item-${idx}`)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 200)
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
+  }, [location.state])
 
   const services = [
     {
       title: 'Digital Marketing Services',
-      subtitle: 'Get seen. Get clicks. Get results.',
-      description: "It's a big, busy internet out there—let's make sure your brand doesn't get lost in the scroll. We're all about mixing data, creativity, and a bit of digital magic to make your message pop in the right places.",
+      subtitle: 'Grow your brand, reach the right audience, and generate measurable business results.',
+      description: 'Grow your brand, reach the right audience, and generate measurable business results with our end-to-end digital marketing solutions. We combine strategy, creative content, performance marketing, and data-driven optimization to build a strong online presence and maximize your ROI.',
+      whyChooseUs: [
+        'Data-driven marketing strategies',
+        'Targeted audience campaigns',
+        'Creative and performance-focused approach',
+        'Lead generation and conversion optimization',
+        'Transparent campaign reporting',
+        'Continuous optimization for better ROI',
+        'Customized strategies for every business'
+      ],
+      closingTagline: 'Turn digital traffic into real business growth with a marketing strategy built around your goals.',
       subServices: [
         {
-          title: 'SEO Optimization',
-          description: 'Improve your search engine rankings and organic visibility'
+          title: 'Social Media Marketing',
+          description: 'Build your brand presence across Instagram, Facebook, LinkedIn, and other social platforms with engaging content, campaigns, and audience strategies.'
         },
         {
-          title: 'Social Media Marketing',
-          description: 'Engage with your audience across all major social platforms'
+          title: 'Performance Marketing',
+          description: 'Run highly targeted advertising campaigns designed to generate leads, sales, app installs, and conversions while optimizing your advertising budget.'
+        },
+        {
+          title: 'Meta & Google Ads',
+          description: 'Create, manage, and optimize Facebook, Instagram, and Google advertising campaigns with continuous performance monitoring and audience optimization.'
+        },
+        {
+          title: 'Search Engine Optimization (SEO)',
+          description: "Improve your website's visibility on search engines through keyword research, on-page optimization, technical SEO, content strategy, and authority building."
         },
         {
           title: 'Content Marketing',
-          description: 'Create compelling content that drives engagement and conversions'
+          description: 'Develop valuable and engaging content that attracts your target audience, builds trust, and supports long-term organic growth.'
         },
         {
-          title: 'Email Marketing',
-          description: 'Nurture leads and retain customers with targeted email campaigns'
+          title: 'Creative & Ad Design',
+          description: 'Design high-quality social media posts, banners, promotional creatives, ad visuals, reels, and campaign assets that communicate your brand effectively.'
         },
         {
-          title: 'PPC Advertising',
-          description: 'Maximize ROI with strategic pay-per-click campaigns'
+          title: 'Lead Generation',
+          description: 'Build targeted lead-generation campaigns to attract potential customers and connect leads directly with your sales or CRM system.'
+        },
+        {
+          title: 'Website & Landing Page Optimization',
+          description: 'Create conversion-focused landing pages and optimize existing websites to improve user experience, engagement, and conversion rates.'
+        },
+        {
+          title: 'Influencer & Campaign Marketing',
+          description: 'Collaborate with relevant influencers and creators to increase brand awareness, engagement, and product visibility.'
         },
         {
           title: 'Analytics & Reporting',
-          description: 'Track performance and make data-driven marketing decisions'
+          description: 'Track campaign performance, leads, conversions, engagement, and ROI through detailed analytics and actionable performance reports.'
         }
       ]
     },
@@ -276,7 +320,7 @@ function Service() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 sm:mb-6 px-4"
+              className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-3 sm:mb-4 px-4 leading-[1.15] tracking-tight"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -284,7 +328,7 @@ function Service() {
               <span className="text-white">Our</span> <span className="text-orange-500">Services</span>
             </motion.h1>
             <motion.p 
-              className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4"
+              className="font-paragraph text-xs sm:text-sm text-gray-300 max-w-2xl mx-auto px-4 leading-[1.6]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -298,6 +342,7 @@ function Service() {
           {services.map((service, index) => (
             <motion.div
               key={index}
+              id={`service-item-${index}`}
               className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden hover:border-orange-500 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -310,20 +355,20 @@ function Service() {
             >
               <motion.button
                 onClick={() => toggleAccordion(index)}
-                className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 cursor-pointer"
                 whileHover={{ backgroundColor: "rgba(17, 24, 39, 1)" }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="flex-1 pr-2 sm:pr-4">
                   <motion.h3 
-                    className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-1"
+                    className="font-subheading font-semibold text-base sm:text-lg text-white mb-1 leading-[1.35]"
                     initial={false}
                     animate={{ color: openIndex === index ? "#f97316" : "#ffffff" }}
                     transition={{ duration: 0.2 }}
                   >
                     {service.title}
                   </motion.h3>
-                  <p className="text-xs sm:text-sm text-gray-400">{service.subtitle}</p>
+                  <p className="font-paragraph text-xs sm:text-sm text-gray-400">{service.subtitle}</p>
                 </div>
                 <motion.div 
                   className="shrink-0"
@@ -383,7 +428,9 @@ function Service() {
                         <ServiceDetail 
                           serviceTitle={service.title} 
                           description={service.description}
-                          subServices={service.subServices} 
+                          subServices={service.subServices}
+                          whyChooseUs={service.whyChooseUs}
+                          closingTagline={service.closingTagline}
                         />
                       </motion.div>
                     </div>
@@ -403,7 +450,7 @@ function Service() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.h2 
-            className="text-2xl sm:text-3xl font-bold text-white mb-4 px-4"
+            className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-3 px-4 leading-[1.15] tracking-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -412,7 +459,7 @@ function Service() {
             Ready to Get Started?
           </motion.h2>
           <motion.p 
-            className="text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg px-4"
+            className="font-paragraph text-xs sm:text-sm text-gray-300 mb-5 sm:mb-6 px-4 leading-[1.6]"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -421,7 +468,11 @@ function Service() {
             Let's discuss how we can help transform your business
           </motion.p>
           <motion.button 
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+            onClick={() => {
+              navigate('/contact-us')
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+            }}
+            className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-subheading font-bold text-sm sm:text-base transition-all duration-300 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}

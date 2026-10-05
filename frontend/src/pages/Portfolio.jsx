@@ -122,14 +122,14 @@ function Portfolio() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl text-center md:text-left mx-auto md:mx-0"
           >
-            <p className="text-orange-500 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+            <p className="text-orange-500 text-xs sm:text-sm font-subheading font-bold tracking-[0.2em] uppercase mb-4">
               Our Portfolio
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] mb-5">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl leading-[1.15] tracking-tight mb-3">
               Work That Drives{' '}
               <span className="text-orange-500">Real Results.</span>
             </h1>
-            <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto md:mx-0">
+            <p className="font-paragraph text-xs sm:text-sm text-gray-300 leading-[1.6] mb-8 max-w-lg mx-auto md:mx-0">
               Explore campaigns, brands, and digital experiences crafted by
               Digital Buddies to help businesses grow with clarity and impact.
             </p>
@@ -146,7 +146,7 @@ function Portfolio() {
                     className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 shrink-0 mt-0.5"
                     strokeWidth={1.75}
                   />
-                  <span className="text-xs sm:text-sm text-gray-200 leading-snug">
+                  <span className="text-xs sm:text-sm font-subheading font-medium text-gray-200 leading-snug">
                     {label}
                   </span>
                 </div>
@@ -166,7 +166,7 @@ function Portfolio() {
                   key={id}
                   type="button"
                   onClick={() => onFilter(id)}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shrink-0 ${
+                  className={`inline-flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-subheading font-medium transition-all duration-300 shrink-0 cursor-pointer ${
                     active
                       ? 'bg-orange-500 text-white shadow-[0_0_24px_rgba(249,115,22,0.35)]'
                       : 'bg-[#161616] text-gray-300 hover:text-white hover:bg-[#1f1f1f] border border-white/5'
@@ -235,11 +235,11 @@ function Portfolio() {
                       <div className="flex items-end justify-between gap-3">
                         <div className="min-w-0">
                           {item.category && (
-                            <p className="text-orange-500 text-xs sm:text-sm font-medium mb-1 truncate">
+                            <p className="text-orange-500 text-xs sm:text-sm font-subheading font-semibold mb-1 truncate">
                               {item.category}
                             </p>
                           )}
-                          <h2 className="text-lg sm:text-xl font-semibold truncate group-hover:text-orange-400 transition-colors">
+                          <h2 className="font-subheading font-semibold text-base sm:text-lg leading-[1.35] truncate group-hover:text-orange-400 transition-colors">
                             {item.title || 'Untitled project'}
                           </h2>
                         </div>
@@ -257,7 +257,7 @@ function Portfolio() {
                   <button
                     type="button"
                     onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                    className="w-full sm:w-auto min-w-[280px] px-10 py-3.5 rounded-xl border border-orange-500 font-medium transition-colors duration-300 bg-orange-500 text-white sm:bg-transparent sm:text-orange-500 hover:bg-orange-500 hover:text-white"
+                    className="w-full sm:w-auto min-w-[280px] px-10 py-3.5 rounded-xl border border-orange-500 font-subheading font-semibold transition-colors duration-300 bg-orange-500 text-white sm:bg-transparent sm:text-orange-500 hover:bg-orange-500 hover:text-white cursor-pointer"
                   >
                     View More Projects
                   </button>
