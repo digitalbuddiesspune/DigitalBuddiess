@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
@@ -6,6 +6,20 @@ function Navbar() {
   const location = useLocation()
   const isTransparentPage = location.pathname === '/' || location.pathname === '/contact-us'
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -21,7 +35,7 @@ function Navbar() {
   }
   
   return (
-    <nav className={`${isTransparentPage ? 'bg-transparent' : 'bg-black'} absolute top-0 left-0 right-0 z-50`}>
+    <nav className={`${isScrolled ? 'bg-black shadow-lg' : (isTransparentPage ? 'bg-transparent' : 'bg-black')} fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">

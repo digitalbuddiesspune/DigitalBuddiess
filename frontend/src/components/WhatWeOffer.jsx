@@ -242,9 +242,9 @@ const WhatWeOffer = () => {
       {/* Decorative subtle background grid pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:24px_24px]"></div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-0 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 px-4 sm:px-0">
          
 
           <motion.h2
@@ -302,7 +302,7 @@ const WhatWeOffer = () => {
                     else if (diff === 1) handleNext();
                     else handleCardClick(service.id);
                   }}
-                  className={`absolute top-0 left-1/2 -translate-x-1/2 w-[52vw] sm:w-[50vw] md:w-[500px] lg:w-[600px] xl:w-[660px] rounded-[22px] sm:rounded-[30px] md:rounded-[32px] overflow-hidden border transition-shadow duration-500 select-none cursor-pointer flex flex-col justify-between ${isCenter
+                  className={`absolute top-0 left-1/2 -translate-x-1/2 w-[55vw] sm:w-[50vw] md:w-[500px] lg:w-[600px] xl:w-[660px] rounded-[22px] sm:rounded-[30px] md:rounded-[32px] overflow-hidden border transition-shadow duration-500 select-none cursor-pointer flex flex-col justify-between ${isCenter
                       ? 'border-orange-500/50 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_35px_rgba(249,115,22,0.18)] bg-gradient-to-b from-[#1e1e22] via-[#161618] to-[#0f0f11]'
                       : 'border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.7)] bg-gradient-to-b from-[#18181a] via-[#141416] to-[#0c0c0e] hover:border-white/25'
                     }`}
@@ -468,7 +468,7 @@ const WhatWeOffer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-12 sm:mt-20 p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-950 border border-gray-800/80 relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 shadow-2xl"
+          className="mt-12 sm:mt-20 mx-4 sm:mx-0 p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-950 border border-gray-800/80 relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 shadow-2xl"
         >
           {/* Subtle glow accent */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
