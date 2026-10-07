@@ -129,13 +129,13 @@ const WhatWeOffer = () => {
     setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
   };
 
-  // Auto-scroll every 3 seconds
+  // Auto-scroll every 5 seconds
   useEffect(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     if (!isPaused) {
       timerRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % services.length);
-      }, 3000);
+      }, 5000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -430,7 +430,7 @@ const WhatWeOffer = () => {
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
                         transition={{
-                          duration: isPaused ? 0 : 3,
+                          duration: isPaused ? 0 : 5,
                           ease: "linear"
                         }}
                         className="h-full bg-orange-500 rounded-full"
